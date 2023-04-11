@@ -1,0 +1,71 @@
+/**
+ * @see https://www.electron.build/configuration/configuration
+ */
+{
+  appId: 'YourAppID',
+  productName: 'vedoClient',
+  copyright: 'Copyright © 2023 vedo',
+  asar: true,
+  // "icon": "favicon.ico",
+  directories: {
+    //  buildResources: 'assets',
+   // output: './release/${version}',
+    output: './release/client-dist',
+  },
+  extraMetadata: {
+    main: './release/app/main/main.js'
+  },
+  files: ['./release/app/**'],
+  publish: [{ provider: 'generic', url: 'http://127.0.0.1:4000/download' }],
+  mac: {
+    icon: 'build/icons/icon.icns',
+    category: 'public.app-category.Productivity',
+    artifactName: '${productName}_${version}.${ext}',
+    target: {
+      target: 'default',
+      arch: ['arm64', 'x64']
+    }
+  },
+  dmg: {
+    icon: 'build/icons/icon.icns',
+    iconSize: 100,
+    contents: [
+      {
+        x: 130,
+        y: 220
+      },
+      {
+        x: 410,
+        y: 220,
+        type: 'link',
+        path: '/Applications'
+      }
+    ]
+  },
+  win: {
+    icon: 'build/icons/icon.ico',
+    target: [
+      {
+        target: 'nsis',
+        arch: ['x64']
+      }
+    ],
+    artifactName: '${productName}_${version}.${ext}'
+  },
+
+  nsis: {
+    oneClick: false, // 是否一键安装
+    allowElevation: true, // 允许请求提升。若为false，则用户必须使用提升的权限重新启动安装程序。
+    allowToChangeInstallationDirectory: true, //是否允许修改安装目录
+    installerIcon: './build/icons/icon.ico', // 安装时图标
+    //    "uninstallerIcon": "./build/icons/icon.ico",//卸载时图标
+    //    "installerHeaderIcon": "./build/icons/icon.ico", // 安装时头部图标
+    createDesktopShortcut: true, // 是否创建桌面图标
+    createStartMenuShortcut: true, // 是否创建开始菜单图标
+    shortcutName: '${productName}', // 快捷方式名称
+    runAfterFinish: true, //是否安装完成后运行
+    perMachine: false, // 是否开启安装时权限限制（此电脑或当前用户）
+    deleteAppDataOnUninstall: false
+  }
+  // extraResources: ['./assets/**']
+}
