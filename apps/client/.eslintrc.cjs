@@ -2,7 +2,7 @@
 module.exports = {
   root: true,
   'extends': [
-   "custom"
+    "custom"
   ],
   parserOptions: {
     ecmaVersion: 'latest'

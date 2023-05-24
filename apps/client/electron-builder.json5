@@ -9,7 +9,7 @@
   // "icon": "favicon.ico",
   directories: {
     //  buildResources: 'assets',
-   // output: './release/${version}',
+    // output: './release/${version}',
     output: './release/client-dist',
   },
   extraMetadata: {

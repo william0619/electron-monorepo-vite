@@ -148,4 +148,5 @@ class BrowserHandler {
   }
 }
 
+
 export const browserHandler = new BrowserHandler()

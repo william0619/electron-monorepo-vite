@@ -22,9 +22,6 @@ const electronHandler = {
     // 发消息给 main 再异步获取
     invoke(channel, args) {
       return electron.ipcRenderer.invoke(channel, args);
-    },
-    createOrderDetailWin(id) {
-      this.send("createOrderDetail", { id });
     }
   },
   // 是否windows 平台
